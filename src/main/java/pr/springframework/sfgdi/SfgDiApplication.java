@@ -3,16 +3,18 @@ package pr.springframework.sfgdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import pr.springframework.sfgdi.controllers.ConstructorInjectionController;
-import pr.springframework.sfgdi.controllers.MyController;
-import pr.springframework.sfgdi.controllers.PropertyInjectionController;
-import pr.springframework.sfgdi.controllers.SetterInjectionController;
+import pr.springframework.sfgdi.controllers.*;
 
 @SpringBootApplication
 public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		System.out.println("----- Profile");
+		//application.properties - spring.profiles.active=$PROFILE_NAME to activate profile
+		I18NController i18NController = (I18NController) ctx.getBean("i18NController");
+		System.out.println(i18NController.sayHello());
 
 		System.out.println("----- Primary Bean");
 		MyController myController = (MyController) ctx.getBean("myController");
