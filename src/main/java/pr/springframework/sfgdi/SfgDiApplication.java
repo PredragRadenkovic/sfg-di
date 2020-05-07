@@ -11,6 +11,10 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println("--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
+
 		System.out.println("----- Profile");
 		//application.properties - spring.profiles.active=$PROFILE_NAME to activate profile
 		I18NController i18NController = (I18NController) ctx.getBean("i18NController");
